@@ -6,6 +6,10 @@ import java.util.List;
 
 public interface ArticleService {
 
+    List<Article> getPublishedArticle();
+
+    List<Article>  getDraftArticle();
+
     Article addArticle(Article article);
 
 
@@ -20,9 +24,7 @@ public interface ArticleService {
 
     boolean publishArticle(String providerKey);
 
-    List<Article> getPublishedArticle();
 
-    List<Article>  getDraftArticle();
 
     //recent articles
 

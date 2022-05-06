@@ -10,15 +10,15 @@ import java.util.Optional;
 
 @Repository
 public interface AuthorRepo extends CrudRepository<Author,Long> {
-    Author findByAuthorName(String authorName);
-
-    Optional<Author> findById(Long id);
-
-    Author save(Author author);
-
-    void deleteById(Long id);
-
-    List<Author> findAll();
-
-    void updateAuthor(Long id, Author author);
+//    Author findByAuthorName(String authorName);
+//
+//    Optional<Author> findById(Long id);
+//
+//    Author save(Author author);
+//
+//    void deleteById(Long id);
+//
+//    List<Author> findAll();
+//
+//    void updateAuthor(Long id, Author author);
 }

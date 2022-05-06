@@ -19,7 +19,7 @@ public interface CategoryRepo extends CrudRepository<Category,String> {
 
     Category save(Category Category);
 
-    void deleteById(Long id);
+    void deleteByName(Long id);
 
     List<Category> findAll();
 

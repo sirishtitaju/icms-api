@@ -1,20 +1,31 @@
 package com.initial.Controller;
 
 
+import com.initial.model.Article;
+import com.initial.services.ArticleService;
+import com.initial.services.AuthorService;
+import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.http.annotation.Post;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Controller("/home")
 public class ArticleController {
+    @Inject
+    @Named("Article")
+    private ArticleService service;
 
-        @Get("/article")
-        public String showArticle()
+
+    @Post("/add_article")
+        public Article AddArticle(@Body Article article)
         {
-            return "none";
+            return  service.addArticle(article);
         }
-
-
     }
+
+
 
 
 

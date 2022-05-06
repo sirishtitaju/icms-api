@@ -12,19 +12,17 @@ import java.util.List;
 public class ArticleServiceManager implements ArticleService {
 
     @Inject
-    private ArticleRepo authorRepo;
+    private ArticleRepo articleRepo;
 
 
     public Article addArticle(Article article) {
-        return authorRepo.save(article);
+        return articleRepo.save(article);
     }
-
-
 
 
     @Override
     public Article updateArticle(Article article) {
-        return null;
+        return articleRepo.update(article);
     }
 
     @Override

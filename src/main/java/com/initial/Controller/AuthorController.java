@@ -13,16 +13,12 @@ public class AuthorController {
 //    private AuthorService service;
 
 
-    @Controller("/article")
-    public class ArticleController {
-
-        @Get("/article")
-        public String showArticle()
+        @Get("/show_author")
+        public String showAuthor()
         {
             return "none";
         }
 
 
-    }
 
 }
