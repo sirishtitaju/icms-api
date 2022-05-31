@@ -1,26 +1,36 @@
 package com.initial.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
 @Entity
-public class   Category {
+public class Category {
+
+/*
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+*/
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long categoryId;//Type Migration if want to change your Integer/Long or any Wrapper Class
     private String imageUrl;
     private String name;
     private int priority;
-//    private ContentModerator editor;
     private long createdAt;
     private long updatedAt;
+    private long productId;
 
-    //product
+    @ManyToOne
+    private Product product;
 }

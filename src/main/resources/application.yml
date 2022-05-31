@@ -1,7 +1,36 @@
 micronaut:
   application:
     name: project1
+  server:
+    cors:
+      enabled: true
+    port: 8081
+
 netty:
   default:
     allocator:
       max-order: 3
+
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
+
+datasources:
+  default:
+    url: ${DB_URL:`jdbc:postgresql://localhost:5432/article`}
+    driverClassName: org.postgresql.Driver
+    username: ${DB_USERNAME:`postgres`}
+    password: ${DB_PASSWORD:`atidugreece`}
+    dialect: POSTGRES
+    maximum-pool-size: 15
+    minimum-idle: 1
+    idle-timeout: 600000
+    auto-commit: true
+    data-source-properties:
+      reWriteBatchInserts: true
+      disableColumnSanitiser: true

@@ -1,13 +1,9 @@
 package com.initial.model;
 
-import com.sun.source.doctree.SummaryTree;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.ArrayList;
+import lombok.ToString;
 
-
-
+@ToString
 public class CTALink {
     private String web;
     private String ios;
@@ -56,6 +52,7 @@ public class CTALink {
         this.tracker = tracker;
     }
 
+    @ToString
     public static class Tracker{
         private String impression;
         private String click;

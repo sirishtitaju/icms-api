@@ -1,4 +1,4 @@
-package com.initial.ServiceImpl;
+package com.initial.serviceImpl;
 
 import com.initial.services.ProductService;
 import com.initial.model.Product;
@@ -6,7 +6,7 @@ import com.initial.repo.ProductRepo;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
-import java.util.Optional;
+import java.util.List;
 
 @Singleton
 public class ProductServiceManager implements ProductService {
@@ -16,26 +16,27 @@ public class ProductServiceManager implements ProductService {
 
     @Override
     public Product addProduct(Product product) {
-
         return productRepo.save(product);
     }
 
     @Override
-    public Optional<Product> findProductByName(String name) {
-        return productRepo.findById(name);
+    public Product findProductById(long Id) {
+         return productRepo.findByProductId(Id);
+    }
+    @Override
+    public void delete(long Id) {
+        productRepo.deleteByProductId(Id);
     }
 
-    @Override
-    public Optional<Product> findProductByKey(String key) {
-        return productRepo.findById(key);
-    }
 
     public Product updateProduct(Product product) {
         return productRepo.update(product);
     }
 
+
+
     @Override
-    public void delete(String key) {
-        productRepo.deleteById(key);
+    public List<Product> findAll() {
+        return (List<Product>) productRepo.findAll();
     }
 }

@@ -3,20 +3,20 @@ package com.initial.services;
 
 import com.initial.model.Product;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface ProductService {
 
 
     Product addProduct(Product product);
 
-    Optional<Product> findProductByName(String name);
-
-    Optional<Product> findProductByKey(String key);
+    Product findProductById(long key);
 
     Product updateProduct(Product product);
 
-    void delete(String key);
+    void delete(long key);
+
+    List<Product> findAll();
 
 
 

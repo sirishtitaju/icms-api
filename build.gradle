@@ -1,6 +1,7 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.application") version "3.3.2"
+    id 'io.franzbecker.gradle-lombok' version '1.14'
 }
 
 version = "0.1"
@@ -11,23 +12,56 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor('io.micronaut:micronaut-http-validation:3.4.1')
-    implementation("io.micronaut:micronaut-http-client")
-    implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("io.micronaut:micronaut-runtime")
-    implementation("jakarta.annotation:jakarta.annotation-api")
-    runtimeOnly("ch.qos.logback:logback-classic")
-    implementation("io.micronaut:micronaut-validation")
+    annotationProcessor('io.micronaut:micronaut-http-validation:3.4.3')
+    implementation('io.micronaut:micronaut-http-client:3.4.3')
+    implementation('io.micronaut:micronaut-jackson-databind:3.4.3')
+    implementation('io.micronaut:micronaut-runtime:3.4.3')
+    implementation('jakarta.annotation:jakarta.annotation-api:2.1.0')
+    runtimeOnly('ch.qos.logback:logback-classic:1.2.11')
+    implementation('io.micronaut:micronaut-validation:3.4.3')
+
+// https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator
+   // implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Alpha3'
+
+// https://mvnrepository.com/artifact/io.micronaut.configuration/micronaut-hibernate-validator
+   // implementation 'io.micronaut.configuration:micronaut-hibernate-validator:1.0.0'
 
 
-    annotationProcessor("io.micronaut.data:micronaut-data-processor:3.2.2")
-    implementation('io.micronaut.sql:micronaut-hibernate-jpa:4.1.1')
-    implementation("io.micronaut.data:micronaut-data-hibernate-jpa:3.2.2")
-    implementation('io.micronaut.sql:micronaut-jdbc-hikari:4.1.1')
+    implementation('io.micronaut.sql:micronaut-hibernate-jpa:4.3.0')//here
 
+    implementation('io.micronaut.data:micronaut-data-hibernate-jpa:3.3.0')//here
+
+    implementation('io.micronaut.sql:micronaut-jdbc-hikari:4.3.0')
+
+
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation 'org.postgresql:postgresql:42.3.4'
 
 // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compileOnly 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+
+// https://mvnrepository.com/artifact/javax.validation/validation-api
+  //  implementation 'javax.validation:validation-api:2.0.1.Final'
+
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    //implementation 'org.hibernate:hibernate-validator:5.2.4.Final'
+
+
+
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+
+
+
+//////////////////////////////////////////micronaut security authenticaiton
+    //usually used for
+    // AuthenticationProvider
+
+    // https://mvnrepository.com/artifact/io.micronaut/micronaut-security
+//    implementation 'io.micronaut:micronaut-security:1.0.0'
+
 
 
 }
@@ -44,7 +78,7 @@ java {
 graalvmNative.toolchainDetection = false
 micronaut {
     runtime("netty")
-    testRuntime("junit5")
+    testRuntime("junit5")    testRuntime("junit5")
     processing {
         incremental(true)
         annotations("com.initial.*")

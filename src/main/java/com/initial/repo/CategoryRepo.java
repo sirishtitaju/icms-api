@@ -12,16 +12,22 @@ import java.util.Optional;
 
 
 @Repository
-public interface CategoryRepo extends CrudRepository<Category,String> {
+public interface CategoryRepo extends CrudRepository<Category,Long> {
+    Optional<Category> findByCategoryId(long id);
 
-    Category findByName(String CategoryName);
+    void deleteByCategoryId(long id);
+
+    List<Category> findByProductId(long productId);
 
 
-    Category save(Category Category);
-
-    void deleteByName(Long id);
-
-    List<Category> findAll();
-
-    void updateCategory(Long id, Category Category);
+    //Category findByName(String CategoryName);
+//
+//
+//    Category save(Category Category);
+//
+//    void deleteByName(int id);
+//
+//    List<Category> findAll();
+//
+//    void updateCategory(Long id, Category Category);
 }
