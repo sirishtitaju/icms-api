@@ -20,7 +20,7 @@ import java.util.Optional;
 @Setter
 @Getter
 @AllArgsConstructor
-@Prototype
+@Prototype//Article ko Object Banxa ra @PROTOTYPE haleko chahinna hola, prototype
 @Introspected
 @Builder
 @ToString

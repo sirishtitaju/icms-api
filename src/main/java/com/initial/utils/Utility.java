@@ -11,6 +11,7 @@ public class Utility {
 
     public static ArticleDTO getArticleDTO(Article article){
       return ArticleDTO.builder()
+              .id(article.getId())
               .providerKey(article.getProviderKey())
               .content(article.getContent())
               .title(article.getTitle())
@@ -70,6 +71,8 @@ public class Utility {
         article.setAudioSubTitle(articleDTO.getAudioSubTitle());
         article.setTitle(articleDTO.getTitle());
         article.setPublishedTimeStamp(articleDTO.getPublishedTimeStamp());
+
+
 
         article.setAuthorId(articleDTO.getAuthorId());
         article.setCategoryId(articleDTO.getCategoryId());

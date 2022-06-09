@@ -16,8 +16,17 @@ public class ArticleServiceManager implements ArticleService {
 
     @Inject
     private ArticleRepo articleRepo;
+
+
+
+    @Override
+    public Article getByAuthorLinkAndAuthorId(String authorLink, Integer id) {
+        return articleRepo.findByAuthorLinkAndAuthorId(authorLink,id);
+    }
+
     @Override
     public Article add(Article article) {
+        System.out.println("gsm: articleAddManager: " + article.toString());
         return articleRepo.save(article);
     }
 
@@ -29,6 +38,14 @@ public class ArticleServiceManager implements ArticleService {
     public List<Article> getArticles() {
         return (List<Article>) articleRepo.findAll();
     }
+
+
+
+    @Override
+    public List<Article> getSortedArticle() {
+        return articleRepo.getSortedArticle();
+    }
+
     @Override
     public Article getArticlesByIds(Integer aId, Integer cId, Integer pId) {
         return  articleRepo.findByAuthorIdAndCategoryIdAndProductId(aId,cId,pId);

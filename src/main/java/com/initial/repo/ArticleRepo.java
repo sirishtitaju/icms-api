@@ -3,6 +3,8 @@ package com.initial.repo;
 
 import com.initial.model.Article;
 import com.initial.model.ArticleDTO;
+import com.initial.model.Author;
+import io.micronaut.data.annotation.Query;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.model.Sort;
 import io.micronaut.data.repository.CrudRepository;
@@ -25,6 +27,7 @@ public interface ArticleRepo extends CrudRepository<Article, Integer> {
 
     Article findByProviderKey(String providerKey);
     void deleteByProviderKey(String providerKey);
+    public Article findByAuthorLinkAndAuthorId(String authorLink, Integer id);
 
     public Article findByTitleAndProviderKey(String title,String providerKey);
     public Article findByTitle(String title);
@@ -41,6 +44,9 @@ public interface ArticleRepo extends CrudRepository<Article, Integer> {
     public List<Article> findByCategoryId(Integer cId);
     public List<Article> findByProductId(Integer pId);
 
+
+    @Query("select u from Article u order by u.id desc ")
+    public List<Article> getSortedArticle();
 
 
 

@@ -18,10 +18,19 @@ public class  ArticleController {
     //    @Named("Article")
     @Inject
     private ArticleServiceManager articleServiceManager;
+
+    @Delete("/{providerKey}")//deleting via providerkey
+    public HttpResponse<Void> delete(@PathVariable String providerKey)
+    {
+        articleServiceManager.deleteArticleBy(providerKey);
+        return HttpResponse.ok();
+    }
+
     @Post()
     public HttpResponse<Article> add(@Body ArticleDTO articleDTO)
     {
-        return HttpResponse.ok(articleServiceManager.add(Utility.getArticle(articleDTO)) ).header("X-My-Header", "Foo");
+        System.out.println("gsm: articleAdd: " + articleDTO.toString());
+        return HttpResponse.created(articleServiceManager.add(Utility.getArticle(articleDTO)) ).header("X-My-Header", "Foo");
     }
     @Post("/addDTO")
     public HttpResponse<ArticleDTO> addDTO(@Body ArticleDTO articleDTO)
@@ -37,10 +46,8 @@ public class  ArticleController {
 //    }
 
 
-
-
-
     @Produces(MediaType.APPLICATION_JSON)
+
     @Get("/{id}")
     public Article getArticle(@QueryValue  Integer id){
 
@@ -69,9 +76,14 @@ public class  ArticleController {
 
 
 
-    @Get("/ByAuthorIdCategoryIdProductId")
-    public HttpResponse<Article> getAllArticle(Integer aId, Integer cId, Integer pId){
-        return  HttpResponse.ok( articleServiceManager.getArticlesByIds(aId,cId,pId) ).header("X-My-Header", "Foo").header("X-My-Header2", "Foo" );
+//    @Get("/ByAuthorIdCategoryIdProductId")
+//    public HttpResponse<Article> getAllArticle(Integer aId, Integer cId, Integer pId){
+//        return  HttpResponse.ok( articleServiceManager.getArticlesByIds(aId,cId,pId) ).header("X-My-Header", "Foo").header("X-My-Header2", "Foo" );
+//    }
+
+    @Get("/ByAuthorIdAuthorLink")
+    public HttpResponse<Article> getAllArticleByAuthorDetails(String authorLink, Integer authorId){
+        return  HttpResponse.ok( articleServiceManager.getByAuthorLinkAndAuthorId(authorLink,authorId)).header("X-My-Header", "Foo").header("X-My-Header2", "Foo" );
     }
     @Get("/ByAuthorId")
     public HttpResponse<List<Article>> getArticleByAuthor(Integer aId){
@@ -85,27 +97,26 @@ public class  ArticleController {
     public HttpResponse<List<Article>> getAllArticleByProduct(Integer pId){
         return  HttpResponse.ok( articleServiceManager.getArticlesByProductId(pId) ).header("X-My-Header", "Foo").header("X-My-Header2", "Foo" );
     }
-
-
     @Get("/ByString/{id}")
     public Article getArticle(@PathVariable String id){
         return articleServiceManager.get(id);
     }
 
-
     @Get("/all")
-    public HttpResponse<List<Article>> getALlArticle(){
+    public HttpResponse<List<Article>> getAllArticle(){
         return  HttpResponse.ok( articleServiceManager.getArticles() ).header("X-My-Header", "Foo").header("X-My-Header2", "Foo" );
     }
 
-
-
-    @Delete("/{providerKey}")//deleting via providerkey
-    public HttpResponse<Void> delete(@PathVariable String providerKey)
-    {
-        articleServiceManager.deleteArticleBy(providerKey);
-        return HttpResponse.ok();
+    //____________________________________________ Sorted According to Descending Order of Article Id _______________________________-
+    @Get("/allSorted")
+    public HttpResponse<List<Article>> getSortedArticle(){
+        return  HttpResponse.ok( articleServiceManager.getSortedArticle () ).header("X-My-Header", "Foo").header("X-My-Header2", "Foo" );
     }
+
+
+
+
+
 
 
 

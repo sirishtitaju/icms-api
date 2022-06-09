@@ -19,7 +19,7 @@ public class CallToAction {
     @Id
     private long id;
     private String name;
-//    private CallToActionType type;//type matraxa
+    private CallToActionType type;//type matraxa
     private String buttonText;
     private String buttonBackgroundColor;
     private String textColor;
@@ -126,6 +126,13 @@ public class CallToAction {
         isSticky = sticky;
     }
 
+    public void setType(CallToActionType type) {
+        this.type = type;
+    }
+
+    public CallToActionType getType() {
+        return type;
+    }
     //filter
     //make seperate cclass in filters
     /*private String platform;

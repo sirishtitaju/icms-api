@@ -4,7 +4,7 @@ micronaut:
   server:
     cors:
       enabled: true
-    port: 8081
+    port: 8080
 
 netty:
   default:

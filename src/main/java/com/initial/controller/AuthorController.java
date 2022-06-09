@@ -22,7 +22,7 @@ import java.util.List;
     private AuthorServiceManager authorServiceManager;
 
 
-
+//____________________________________Just For Cheking purpose of Sorted List____________
     @Get("/every")
     public List<Author> getEveryAuthor()
     {
@@ -35,7 +35,6 @@ import java.util.List;
     @Get("/everyDay")
     public List<Author> getEveryAuthorBy()
     {
-
         var a=authorServiceManager.EveryAuthor();
         a.forEach(e -> System.out.println(e.toString()));
         return a;
@@ -49,7 +48,7 @@ import java.util.List;
         a.forEach(e -> System.out.println(e.toString()));
         return a;
     }
-
+//++++++++++++++++++++++++++++++++just for getting sorted list of Author
 
     //  return HttpResponse.ok(a).header("X-My-Header", "Foo");
     @Post("/add")

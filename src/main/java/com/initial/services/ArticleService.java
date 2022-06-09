@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface ArticleService {
 
+    public Article getByAuthorLinkAndAuthorId(String authorLink, Integer id);
+
     Article add(Article article);
 
     Article getArticlesByIds(Integer aId, Integer cId, Integer pId);
@@ -15,6 +17,7 @@ public interface ArticleService {
     List<Article> getPublishedArticle();
 
     List<Article>  getDraftArticle();
+
 
 
     ArticleDTO addArticle(ArticleDTO article);
@@ -42,6 +45,7 @@ public interface ArticleService {
 
     List<Article> getArticles();
 
+    public List<Article> getSortedArticle();
 
     Article getByAuthor(String author);
 
