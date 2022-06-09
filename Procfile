@@ -1,0 +1,1 @@
+web: java -jar build\libs\project1-0.1.jar
